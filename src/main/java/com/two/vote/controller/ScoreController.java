@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,12 @@ public class ScoreController {
     private ScoreService scoreService;
 
     @RequestMapping("setScore")
-    public String setScore(String score,String articleid){
-        System.out.println(score);
-        scoreService.setScore(score,articleid);
+    public String setScore(String fraction,String articleid){
+        System.out.println(fraction+"==="+articleid);
+//        BigDecimal bigDecimal = BigDecimal.valueOf(score);
+        BigDecimal fraction1 = new BigDecimal(fraction);
+        long articleid1 = Long.parseLong(articleid);
+        scoreService.setScore(fraction1,articleid1);
 //        String route ="redirect:/managerVoteList/"+userid;
         return "redirect:/managerVoteList";
     }

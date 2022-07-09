@@ -6,6 +6,8 @@ import com.two.vote.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
 public class ScoreServiceImpl implements ScoreService {
 
@@ -23,7 +25,7 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
-    public int setScore(String score,String articleid) {
-        return scoreDao.setScore(score,articleid);
+    public int setScore(BigDecimal fraction, Long articleid) {
+        return scoreDao.setScore(fraction,articleid);
     }
 }
