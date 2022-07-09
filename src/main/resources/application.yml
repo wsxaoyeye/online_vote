@@ -31,3 +31,5 @@ spring:
 mybatis:
   type-aliases-package: com.two.vote.entity
   mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

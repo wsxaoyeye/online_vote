@@ -1,10 +1,12 @@
 package com.two.vote.controller;
 
 import com.two.vote.entity.Article;
+import com.two.vote.entity.Score;
 import com.two.vote.entity.view.ArticleAndOptionsView;
 import com.two.vote.entity.view.OptionAndNumView;
 import com.two.vote.service.CommonService;
 import com.two.vote.service.ManagerService;
+import com.two.vote.service.ScoreService;
 import com.two.vote.service.UserService;
 import com.two.vote.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +35,12 @@ public class ManagerController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ScoreService scoreService;
+
 
     /**
-     *投票列表
+     *投票管理列表
      */
     @GetMapping("managerVoteList/{userId}")
     public String getManagerVoteList(@PathVariable("userId") long userId, Model model, HttpServletRequest request){
@@ -79,10 +84,12 @@ public class ManagerController {
         double hotNum = (double)hot;
         double rate = (total/hotNum)*100;
         DecimalFormat df = new DecimalFormat("#.00");
+        Score score = scoreService.getScore(articid);
         String rateString = df.format(rate)+"%";
         model.addAttribute("rate",rateString);
         model.addAttribute("total",total);
         model.addAttribute("resultView",result);
+        model.addAttribute("score",score);
         return "chart";
     }
 

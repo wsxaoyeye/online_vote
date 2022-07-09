@@ -264,13 +264,17 @@ public class test {
 
     @Test
     public void testSetScore(){
-
         BigDecimal bigDecimal = BigDecimal.valueOf(1234);
         long l = Long.parseLong("123");
         Score score = new Score(null,bigDecimal,l);
-
         int i = scoreService.insetScore(score);
         System.out.println(i);
+    }
+
+    @Test
+    public void testGetScore(){
+        Score score = scoreService.getScore(1657032624522l);
+        System.out.println(score);
     }
 
 }

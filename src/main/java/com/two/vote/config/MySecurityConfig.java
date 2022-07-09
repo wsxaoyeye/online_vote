@@ -1,4 +1,4 @@
-package com.two.vote.config;//package com.two.vote.controller;
+//package com.two.vote.config;//package com.two.vote.controller;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

@@ -26,13 +26,15 @@ public class ScoreController {
         BigDecimal fraction1 = new BigDecimal(fraction);
         long articleid1 = Long.parseLong(articleid);
         scoreService.setScore(fraction1,articleid1);
-//        String route ="redirect:/managerVoteList/"+userid;
-        return "redirect:/managerVoteList";
+//        model.addAttribute("fraction",fraction);
+//        String ip = "106.64.246.55";
+//        String route ="redirect:/voteList/"+ip;
+        return "redirect:/";
     }
 
     @RequestMapping("getScore")
-    public String getScore(Integer scoreid, Model model, HttpServletRequest servletRequest){
-        Score score = scoreService.getScore(scoreid);
+    public String getScore(Long articleid, Model model, HttpServletRequest servletRequest){
+        Score score = scoreService.getScore(articleid);
         List list =new ArrayList();
         Cookie[] cookies = servletRequest.getCookies();
         for (Cookie cookie:cookies){

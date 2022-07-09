@@ -4,6 +4,8 @@ import com.two.vote.entity.Score;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
 
@@ -11,8 +13,8 @@ import java.math.BigDecimal;
 //public interface ScoreDao extends JpaRepository<Score,String> {
 public interface ScoreDao {
 
-//    @Query(value = "select score from score where scoreid=?",nativeQuery = true)
-    Score getScore(int scoreid);
+    @Select("select fraction from score where articleid=#{articleid}")
+    Score getScore(Long articleid);
 
 //    @Transactional
 //    @Query(value = "insert into score(score,articleid) values (score=?1,articleid=?2)",nativeQuery = true)

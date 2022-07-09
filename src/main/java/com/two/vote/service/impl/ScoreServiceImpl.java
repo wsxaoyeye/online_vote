@@ -20,8 +20,8 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
-    public Score getScore(Integer scoreid) {
-        return scoreDao.getScore(scoreid);
+    public Score getScore(Long articleid) {
+        return scoreDao.getScore(articleid);
     }
 
     @Override
