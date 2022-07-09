@@ -268,11 +268,6 @@ public class test {
         BigDecimal bigDecimal = BigDecimal.valueOf(1234);
         long l = Long.parseLong("123");
         Score score = new Score(null,bigDecimal,l);
-
         int i = scoreService.insetScore(score);
-        System.out.println(i);
-        System.out.println(i);
-
     }
-
 }
