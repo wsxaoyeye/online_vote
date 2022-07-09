@@ -272,6 +272,7 @@ public class test {
         int i = scoreService.insetScore(score);
         System.out.println(i);
         System.out.println(i);
+        System.out.println(i);
 
     }
 
