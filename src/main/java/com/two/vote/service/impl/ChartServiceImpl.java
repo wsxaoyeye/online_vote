@@ -63,7 +63,6 @@ public class ChartServiceImpl implements ChartService {
         return rangeAndVN;
     }
 
-
     public List<ValueAndName> parseSourceResult(List<Object> objectList){
         List<ValueAndName> list = new ArrayList<>();
         for (Object object : objectList) {

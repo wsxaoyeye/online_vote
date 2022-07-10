@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -72,6 +73,8 @@ public class ManagerController {
     public String manageCheckResult(@PathVariable("id") long articid,Model model,HttpServletRequest request){
         CommonUtil.setUserNameIdByCookie(request,model);
         ArticleAndOptionsView result = commonService.getCheckResulu(articid);
+        int score = scoreService.getScore(articid);
+
         List<OptionAndNumView> optionAndNumViews = result.getOptionAndNumViews();
         double total = 0;
         for (OptionAndNumView optionAndNumView : optionAndNumViews) {
@@ -84,7 +87,6 @@ public class ManagerController {
         double hotNum = (double)hot;
         double rate = (total/hotNum)*100;
         DecimalFormat df = new DecimalFormat("#.00");
-        Score score = scoreService.getScore(articid);
         String rateString = df.format(rate)+"%";
         model.addAttribute("rate",rateString);
         model.addAttribute("total",total);

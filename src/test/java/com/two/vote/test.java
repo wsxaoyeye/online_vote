@@ -273,7 +273,7 @@ public class test {
 
     @Test
     public void testGetScore(){
-        Score score = scoreService.getScore(1657032624522l);
+        int score = scoreService.getScore(1657032624522l);
         System.out.println(score);
     }
 

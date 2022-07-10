@@ -34,7 +34,7 @@ public class ScoreController {
 
     @RequestMapping("getScore")
     public String getScore(Long articleid, Model model, HttpServletRequest servletRequest){
-        Score score = scoreService.getScore(articleid);
+        int score = scoreService.getScore(articleid);
         List list =new ArrayList();
         Cookie[] cookies = servletRequest.getCookies();
         for (Cookie cookie:cookies){

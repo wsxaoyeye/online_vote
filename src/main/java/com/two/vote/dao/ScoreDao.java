@@ -13,8 +13,8 @@ import java.math.BigDecimal;
 //public interface ScoreDao extends JpaRepository<Score,String> {
 public interface ScoreDao {
 
-    @Select("select fraction from score where articleid=#{articleid}")
-    Score getScore(Long articleid);
+    @Select("select AVG(fraction) from score where articleid=#{articleid}")
+    int getScore(Long articleid);
 
 //    @Transactional
 //    @Query(value = "insert into score(score,articleid) values (score=?1,articleid=?2)",nativeQuery = true)
