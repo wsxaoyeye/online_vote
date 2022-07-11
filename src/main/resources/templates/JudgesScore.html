@@ -51,7 +51,9 @@ img {
 }
 
 .item44 {
-    padding-left: 130px;
+    position: absolute;
+    top:  550px;
+    left: 800px;
 }
 
 .item22>img {
@@ -100,13 +102,7 @@ html, body {
                 <div class="item22">
                     <img class="item11" th:src="|http://localhost:8088/photo/2.png|">
                 </div>
-                <div class="item44">
-                    <input type="hidden" name="userid" th:value="${userid}">
-                    <input type="hidden" name="articleid" th:value="${articleid}">
-                    <button id="btn1" type="submit" class="layui-btn">确认</button>
-                </div>
             </div>
-
 			<div class="item2">
 				<div class="item22">
 					<img class="item12" th:src="|http://localhost:8088/photo/1.jpg|">
@@ -119,10 +115,12 @@ html, body {
                     <input type="hidden" name="optionid2" th:value="${optionid2}">
 				</div>
 			</div>
-            <div class="item22">
-
-            </div>
 		</div>
+            <div class="item44">
+                <input type="hidden" name="userid" th:value="${userid}">
+                <input type="hidden" name="articleid" th:value="${articleid}">
+                <button id="btn1" type="submit" class="layui-btn">确认</button>
+            </div>
         </form>
     </div>
 

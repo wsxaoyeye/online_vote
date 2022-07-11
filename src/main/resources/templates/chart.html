@@ -132,11 +132,24 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-5">
         <div class="well" style="background-color: white;height: 400px;width: 640px">
-            <h4>投票结果</h4>
-            <h4>评委打分:</h4>
-            <h3 style="color: mediumvioletred" th:text="${score}"></h3>
-            <h4>最终得分:</h4>
-            <h3 style="color: mediumvioletred" th:text="${(total*0.8+resultView.hot*0.2)*0.4+score*0.6}"></h3>
+            <h2>投票结果</h2>
+            <br>
+            <br>
+            <h3>评委打分:</h3>
+            <br>
+            <div style="display: flex">
+                <a style="color: #4be2c4;display: block;font-size: 30px" th:text="${optionvalue}" ></a>&nbsp;&nbsp;&nbsp;
+                <a style="color: #4be2c4;display: block;font-size: 30px">：</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="color: lightsalmon;display: block;font-size: 30px" th:text="${avg}" ></a>
+            </div>
+            <br>
+            <div style="display: flex">
+                <a style="color: #4be2c4;display: block;font-size: 30px" th:text="${optionvalue1}" ></a>&nbsp;&nbsp;&nbsp;
+                <a style="color: #4be2c4;display: block;font-size: 30px">：</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="color: lightsalmon;display: block;font-size: 30px" th:text="${avg1}" ></a>
+            </div>
             <br>
             <br>
             <table>

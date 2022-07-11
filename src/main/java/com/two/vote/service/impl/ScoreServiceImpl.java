@@ -38,6 +38,11 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
+    public List<BigDecimal> queryFractions(Long articleid, Long optionssid) {
+        return scoreDao.selectFractions(articleid,optionssid);
+    }
+
+    @Override
     public int getScore(Long articleid) {
         return scoreDao.getScore(articleid);
     }

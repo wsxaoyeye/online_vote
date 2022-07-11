@@ -39,4 +39,8 @@ public interface ScoreDao {
     //查看选项
     @Select("select * from optionss where articleid = #{articleid}")
     List<Optionss> selectOptionssByArticleid(@Param("articleid") Long articleid);
+
+    //查看某一选项的评分
+    @Select("select fraction from score where articleid = #{articleid} and optionssid = #{optionssid}")
+    List<BigDecimal> selectFractions(@Param("articleid") Long articleid,@Param("optionssid") Long optionssid);
 }

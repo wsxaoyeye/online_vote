@@ -13,6 +13,7 @@ import com.two.vote.service.impl.ChartServiceImpl;
 import com.two.vote.service.impl.CommonServiceImpl;
 import com.two.vote.service.impl.LinkServiceImpl;
 import com.two.vote.utils.CreateIdUtil;
+import com.two.vote.utils.ScoreUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -294,5 +296,26 @@ public class test {
         for (Optionss optionss : optionsses) {
             System.out.println(optionss);
         }
+    }
+
+    @Test
+    public void selectFractionsTest(){
+        long l = Long.parseLong("1657034007995");
+        long l1 = Long.parseLong("133");
+        List<BigDecimal> bigDecimals = scoreService.queryFractions(l, l1);
+        for (BigDecimal bigDecimal : bigDecimals) {
+            System.out.println(bigDecimal);
+        }
+    }
+
+    @Test
+    public void testScoreUtil(){
+        List<BigDecimal> list = new ArrayList<>();
+        BigDecimal bigDecimal = new BigDecimal(12);
+        BigDecimal bigDecimal1 = new BigDecimal(13);
+        list.add(bigDecimal1);
+        list.add(bigDecimal);
+        BigDecimal avg = ScoreUtil.getAvg(list);
+        System.out.println(avg);
     }
 }

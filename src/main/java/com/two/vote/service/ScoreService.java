@@ -18,4 +18,6 @@ public interface ScoreService {
     List<Article> queryYes(Integer userid);
 
     List<Optionss> queryOptionssByArticleid(Long articleid);
+
+    List<BigDecimal> queryFractions(Long articleid,Long optionssid);
 }
