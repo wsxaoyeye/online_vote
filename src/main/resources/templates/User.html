@@ -31,7 +31,7 @@
 <span id="myspan" style="text-size:20p; color:red;text-align: center; font-size: 15px" th:text="${lmsg}"></span><br />
 <form class="fi form-signin" action="updateUser" method="post">
     邮&nbsp;&nbsp;&nbsp;&nbsp;箱（原）：
-    <span style="font-size: 13px;font-family: 微软雅黑" th:text="${session.user.getEmail()}">邮箱为空</span><br>
+    <span style="font-size: 13px;font-family: 微软雅黑" th:text="${session.user.email}">邮箱为空</span><br>
     邮&nbsp;&nbsp;&nbsp;&nbsp;箱（新）：
     <input class="form-control" type="email" name="email" th:value="${email}"><br>
     用户名（原）：

@@ -277,4 +277,20 @@ public class test {
         System.out.println(score);
     }
 
+    @Test
+    public void queryNo(){
+        List<Article> scores = scoreService.queryNo(111);
+        for (Article score : scores) {
+            System.out.println(score);
+        }
+    }
+
+    @Test
+    public void queryOptionssByArticleidTest(){
+        long l = Long.parseLong("1657032624522");
+        List<Optionss> optionsses = scoreService.queryOptionssByArticleid(l);
+        for (Optionss optionss : optionsses) {
+            System.out.println(optionss);
+        }
+    }
 }

@@ -31,7 +31,10 @@
                     <div class="header-menu">
                         <ul id="nav">
                             <li><a href="http://localhost:8088/index">首页</a></li>
-                            <li><a href="#">功能介绍</a></li>
+                            <li>
+                                <a th:href="|http://localhost:8088/scoreList/${userid}|" th:if="${userid!=null}">评分管理</a>
+                                <a th:if="${userid==null}" href="http://localhost:8088/login.html">评分管理</a>
+                            </li>
                             <li>
                                 <a th:href="|http://localhost:8088/managerVoteList/${userid}|" th:if="${userid!=null}">投票管理</a>
                                 <!--<a th:each="cookie :${#httpServletRequest.getCookies()}" th:if="${cookie.getName().equals('userid')}" th:text="" th:href="|http://localhost:8088/managerVoteList/${session.userid}|">投票管理</a>-->
