@@ -23,6 +23,7 @@ public class WebConfigurer implements WebMvcConfigurer {
         ir.addPathPatterns("/manageCheckResult/**");
         ir.addPathPatterns("/deleteArticle/**");
         ir.addPathPatterns("/update/**");
+        ir.addPathPatterns("/voteDetail/**");
 
 //        // 不拦截路径
 //        List<String> irs = new ArrayList<String>();

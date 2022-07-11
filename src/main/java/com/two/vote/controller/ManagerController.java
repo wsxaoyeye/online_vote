@@ -1,10 +1,12 @@
 package com.two.vote.controller;
 
 import com.two.vote.entity.Article;
+import com.two.vote.entity.Score;
 import com.two.vote.entity.view.ArticleAndOptionsView;
 import com.two.vote.entity.view.OptionAndNumView;
 import com.two.vote.service.CommonService;
 import com.two.vote.service.ManagerService;
+import com.two.vote.service.ScoreService;
 import com.two.vote.service.UserService;
 import com.two.vote.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -33,9 +36,12 @@ public class ManagerController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ScoreService scoreService;
+
 
     /**
-     *投票列表
+     *投票管理列表
      */
     @GetMapping("managerVoteList/{userId}")
     public String getManagerVoteList(@PathVariable("userId") long userId, Model model, HttpServletRequest request){
@@ -67,6 +73,8 @@ public class ManagerController {
     public String manageCheckResult(@PathVariable("id") long articid,Model model,HttpServletRequest request){
         CommonUtil.setUserNameIdByCookie(request,model);
         ArticleAndOptionsView result = commonService.getCheckResulu(articid);
+        int score = scoreService.getScore(articid);
+
         List<OptionAndNumView> optionAndNumViews = result.getOptionAndNumViews();
         double total = 0;
         for (OptionAndNumView optionAndNumView : optionAndNumViews) {
@@ -83,6 +91,7 @@ public class ManagerController {
         model.addAttribute("rate",rateString);
         model.addAttribute("total",total);
         model.addAttribute("resultView",result);
+        model.addAttribute("score",score);
         return "chart";
     }
 

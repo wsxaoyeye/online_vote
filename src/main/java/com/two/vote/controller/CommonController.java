@@ -70,6 +70,9 @@ public class CommonController {
         return ResponseEntity.ok(articleAndFlagList);
     }
 
+    /**
+     * 获取ip
+     */
     @GetMapping("/voteList/{ip}")
     public ResponseEntity<List<ArticleAndFlag>> getVoteList(@PathVariable("ip") String ip){
         if (ip==null&&"".equals(ip)){

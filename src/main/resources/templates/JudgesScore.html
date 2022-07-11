@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>评委打分</title>
+<script src="../js/jquery-1.12.4.js"></script>
+<script src="../layui/layui.js"></script>
+<link rel="stylesheet" href="../layui/css/layui.css" media="all">
+<meta http-equiv=”Content-type” name=”viewport”
+	content=”initial-scale=1.0, maximum-scale=1.0, user-scalable=no,
+	width=device-width”>
+</head>
+<style>
+.item1, .item2,.item3 {
+	width: 20%;
+	/*border: 1px solid red;*/
+	display: inline-block;
+}
+
+.item1 {
+    float: left;
+	margin-left: 14%;
+    height: 150px;
+}
+
+.item3 {
+    float: left;
+    margin-left: 5%;
+}
+
+.item2 {
+	float: left;
+    margin-left: 5%;
+}
+
+
+img {
+	border-radius: 50%;
+	width: 70%;
+	height: 70%;
+}
+
+.item22 {
+	text-align: center;
+	padding-top: 30px;
+    height: 220px;
+}
+
+.item33 {
+    padding-left: 50px;
+}
+
+.item44 {
+    padding-left: 130px;
+}
+
+.item22>img {
+	text-align: center;
+}
+
+.txt {
+	text-align: center;
+	width: 100%;
+	line-height: 150px;
+	color: #91e2c0;
+	font-size: 20px;
+}
+
+.item {
+	background-color: #4be2c4;
+	width: 100%;
+}
+
+html, body {
+	height: 100%;
+	background: #5D99CF;
+	overflow: hidden;
+}
+</style>
+
+<body>
+	<div>
+		<div class="txt">评委打分</div>
+        <form th:action="@{/insetScore}" method="post">
+		<div class="item">
+			<div class="item1">
+				<div class="item22">
+					<img class="item11" th:src="|http://localhost:8088/photo/1.jpg|">
+				</div>
+				<div class="item33">
+                    <span style="text-size:20p; color:red;text-align: center; font-size: 15px" th:text="${session.sc}"></span><br />
+					<span class="sp" th:text="${optionvalue}"></span>：<input id="score1" name="fraction1"
+						type="text" placeholder="请输入0-100分的有效分数" th:value="${session.fraction1}">
+                    <input type="hidden" name="optionvalue" th:value="${optionvalue}">
+                    <input type="hidden" name="optionid1" th:value="${optionid1}">
+				</div>
+			</div>
+
+            <div class="item3">
+                <div class="item22">
+                    <img class="item11" th:src="|http://localhost:8088/photo/2.png|">
+                </div>
+                <div class="item44">
+                    <input type="hidden" name="userid" th:value="${userid}">
+                    <input type="hidden" name="articleid" th:value="${articleid}">
+                    <button id="btn1" type="submit" class="layui-btn">确认</button>
+                </div>
+            </div>
+
+			<div class="item2">
+				<div class="item22">
+					<img class="item12" th:src="|http://localhost:8088/photo/1.jpg|">
+				</div>
+				<div class="item33">
+                    <span style="text-size:20p; color:red;text-align: center; font-size: 15px" th:text="${session.ss}"></span><br />
+					<span class="sp1" th:text="${optionvalue1}"></span>：<input id="score2" name="fraction2"
+						type="text" placeholder="请输入0-100分的有效分数" th:value="${session.fraction2}">
+                    <input type="hidden" name="optionvalue1" th:value="${optionvalue1}">
+                    <input type="hidden" name="optionid2" th:value="${optionid2}">
+				</div>
+			</div>
+            <div class="item22">
+
+            </div>
+		</div>
+        </form>
+    </div>
+
+</body>
+<!--<script>-->
+<!--	var btn1 = document.getElementById("btn1");-->
+<!--	btn1.addEventListener("click", function() {-->
+<!--		var test = /^\d$|^[0-9][0-9]$|100/ig;-->
+<!--		var score1 = document.getElementById("score1").value;-->
+<!--        var score2 = document.getElementById("score2").value;-->
+<!--		if (!test.test(score1) || !test.test(score2)) {-->
+<!--			alert("请输入0-100的整数！");-->
+<!--		}-->
+<!--	})-->
+
+<!--	// var btn2 = document.getElementById("btn2");-->
+<!--	// btn2.addEventListener("click", function() {-->
+<!--	// 	var test = /^\d$|^[0-9][0-9]$|100/ig;-->
+<!--	// 	var score2 = document.getElementById("score2").value;-->
+<!--	// 	if (!test.test(score2)) {-->
+<!--	// 		alert("请输入0-100的整数！");-->
+<!--	// 	}-->
+<!--	// })-->
+<!--</script>-->
+<!--<script>-->
+<!--	$(function() {-->
+<!--		var t;-->
+<!--		var r;-->
+<!--		var t2;-->
+<!--		var r2;-->
+<!--		$.ajax({-->
+<!--			url : "../judge/imgs",-->
+<!--			type : "post",-->
+<!--			data : {},-->
+<!--			dataType : "json",-->
+
+<!--			success : function(result) {-->
+<!--				console.log(result);-->
+<!--				console.log(result.length);-->
+<!--				console.log(result[0].singerImg);-->
+<!--				var t1 = eval(result);-->
+
+<!--				$(".item11").attr("src",-->
+<!--						"http://localhost:8080/vote/" + t1[0].singerImg);-->
+<!--				$(".item12").attr("src",-->
+<!--						"http://localhost:8080/vote/" + t1[1].singerImg);-->
+<!--				$(".sp").text(t1[0].sid);-->
+<!--				$(".sp1").text(t1[1].sid);-->
+<!--				$.ajax({-->
+<!--					url : "../judge/rid",-->
+<!--					type : "post",-->
+<!--					data : {},-->
+<!--					dataType : "json",-->
+<!--					success : function(result) {-->
+<!--						console.log(result);-->
+<!--						var tmp = eval(result);-->
+<!--						t = tmp.rid;-->
+<!--						t2 = tmp.rid;-->
+<!--						r = tmp.sidOne;-->
+<!--						r2 = tmp.sidTwo;-->
+<!--						console.log("sidOne:" + result.sidOne);-->
+<!--						console.log("sidTwo:" + result.sidTwo);-->
+<!--						console.log("rid:" + result.rid);-->
+
+<!--					},-->
+<!--					error : function(){-->
+<!--						alert("error1");-->
+<!--					}-->
+<!--				})-->
+
+<!--			},-->
+<!--			error : function(){-->
+<!--				alert("error2");-->
+<!--			}-->
+
+<!--		});-->
+
+<!--		$(document).on("click", "#btn1", function() {-->
+
+<!--			console.log("t:" + t + "===r:" + r);-->
+<!--			var score1 = $("#score1").val();-->
+<!--			console.log("score1:"+score1);-->
+<!--			$.ajax({-->
+<!--				url : "../judge/score",-->
+<!--				type : "post",-->
+<!--				data : {-->
+<!--					"sid" : r,-->
+<!--					"score1" : score1,-->
+<!--					"rid" : t-->
+<!--				},-->
+<!--				dataType : "json",-->
+<!--				success : function(re) {-->
+<!--					var t = eval(re);-->
+<!--					alert(t.msg);-->
+<!--					-->
+<!--				},-->
+<!--				error : function(re) {-->
+<!--					alert("error3");-->
+<!--				}-->
+
+<!--			})-->
+<!--		});-->
+
+<!--		$("#btn2").on("click", function() {-->
+
+<!--			console.log("t:" + t2 + "===r:" + r2);-->
+<!--			var score2 = $("#score2").val();-->
+<!--			console.log("score2:"+score2);-->
+<!--			$.ajax({-->
+<!--				url : "../judge/score2",-->
+<!--				type : "post",-->
+<!--				data : {-->
+<!--					"sid2" : r2,-->
+<!--					"score2" : score2,-->
+<!--					"rid2" : t2-->
+<!--				},-->
+<!--				dataType : "json",-->
+<!--				success : function(re) {-->
+<!--					var t = eval(re);-->
+<!--					alert(t.msg);-->
+<!--				},-->
+<!--				error : function() {-->
+<!--					alert("error4");-->
+<!--				}-->
+
+<!--			})-->
+<!--		});-->
+<!--	})-->
+<!--</script>-->
+
+
+
+<!--</html>-->
+<!--<script>-->
+<!--    import Index from "./index.html";-->
+<!--    export default {-->
+<!--        components: {Index}-->
+<!--    }-->
+<!--</script>-->

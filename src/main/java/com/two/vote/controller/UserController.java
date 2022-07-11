@@ -459,7 +459,7 @@ public class UserController {
         userIdCookie.setPath("/");
         Integer userId = user5.getId();
         request.getSession().setAttribute("username",username);
-        request.getSession().setAttribute("userid",userId.toString());
+        request.getSession().setAttribute("userid",userId);
         request.getSession().setAttribute("user",user5);
         model.addAttribute("username",username);
         model.addAttribute("userid",userId);

@@ -1,14 +1,12 @@
 server:
   port: 8088
   servlet:
-    session:
-      timeout: 1200
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/vote_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
     username: root
     password: 200035qwe
-    #password: 204104920
+#    password: 204104920
     driver-class-name: com.mysql.jdbc.Driver
     hikari:
       idle-timeout: 60000
@@ -31,3 +29,5 @@ spring:
 mybatis:
   type-aliases-package: com.two.vote.entity
   mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

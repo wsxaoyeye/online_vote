@@ -268,6 +268,31 @@ public class test {
         BigDecimal bigDecimal = BigDecimal.valueOf(1234);
         long l = Long.parseLong("123");
         Score score = new Score(null,bigDecimal,l);
+
         int i = scoreService.insetScore(score);
+        System.out.println(i);
+    }
+
+    @Test
+    public void testGetScore(){
+        int score = scoreService.getScore(1657032624522l);
+        System.out.println(score);
+    }
+
+    @Test
+    public void queryNo(){
+        List<Article> scores = scoreService.queryNo(111);
+        for (Article score : scores) {
+            System.out.println(score);
+        }
+    }
+
+    @Test
+    public void queryOptionssByArticleidTest(){
+        long l = Long.parseLong("1657032624522");
+        List<Optionss> optionsses = scoreService.queryOptionssByArticleid(l);
+        for (Optionss optionss : optionsses) {
+            System.out.println(optionss);
+        }
     }
 }
